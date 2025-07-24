@@ -126,7 +126,7 @@ const PeopleList: React.FC = () => {
                     (e.target as HTMLImageElement).src = `${process.env.PUBLIC_URL}/images/default-character.jpg`;
                   }}
                 />
-                <strong>{person.name} (ID: {getIdFromUrl(person.url)})</strong>
+                <strong>{person.name}</strong>
               </div>
             </div>
           );
