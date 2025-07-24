@@ -1,4 +1,5 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
+import LazyImage from "./LazyImage"; // adjust the path if in a different folder
 
 // --- Type Definitions ---
 interface Person {
@@ -126,7 +127,7 @@ const PeopleList: React.FC = () => {
                     (e.target as HTMLImageElement).src = `${process.env.PUBLIC_URL}/images/default-character.jpg`;
                   }}
                 />
-                <strong>{person.name}</strong>
+                <strong>{person.name.toLowerCase().split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}</strong>
               </div>
             </div>
           );
@@ -147,7 +148,7 @@ const PeopleList: React.FC = () => {
           >
             <div className="modal-content">
               <div className="modal-header">
-                <h2 className="modal-title">{activePerson.name}</h2>
+                <h2 className="modal-title">{activePerson.name.toLowerCase().split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}</h2>
                 <button type="button" className="btn-close" onClick={handleCloseModal}></button>
               </div>
               <div className="modal-body CharacterText">

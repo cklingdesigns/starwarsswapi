@@ -1,5 +1,21 @@
+body {
+  background-color: black;
+}
 .App {
   text-align: center;
+}
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  margin: auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .Logo img {
   height: 50px;
@@ -16,6 +32,11 @@
   font-family: 'Star Jedi', sans-serif;
   font-size: 3rem;
   margin: 0;
+}
+.App button {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
 }
 .App-logo {
   height: 40vmin;
@@ -109,10 +130,46 @@
   transition: all 0.3s ease;
   transform: translatey(0);
 }
-.CharacterProfiles .CharacterImage img:hover {
-    transition: all 0.3s ease;
-    transform: translatey(-50px) !important;
+
+
+.CharacterProfiles .CharacterImage {
+  background: #111;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
 }
+
+.CharacterProfiles .CharacterImage::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg, 
+    transparent, 
+    transparent 30%, 
+    rgba(0,255,255,0.3)
+  );
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.CharacterProfiles .CharacterImage:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,255,255,0.5);
+}
+
+.CharacterProfiles .CharacterImage:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+
+
+
 .fade-in {
   opacity: 0;
   transition: opacity 0.5s ease-in;

@@ -1,59 +1,40 @@
 import React, { useState } from "react";
 import { useAuth } from "./Auth";
 
-const Login: React.FC = () => {
+const Login = () => {
   const { login } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("starwarsfan");
+  const [password, setPassword] = useState("password");
   const [error, setError] = useState("");
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://your-api.com/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Invalid credentials");
-      }
-
-      const data = await response.json();
-      login(data.token);
-      setError("");
-    } catch (err: any) {
-      setError(err.message);
+      await login(username, password);
+    } catch (err) {
+      setError("Invalid credentials.");
     }
   };
 
   return (
-    <div className="container mt-5">
+    <div className="LoginForm container mt-5 text-center">
       <h2>Login</h2>
-      {error && <div className="alert alert-danger">{error}</div>}
-      <form onSubmit={handleLogin}>
-        <div className="mb-3">
-          <input
-            className="form-control"
-            type="email"
-            placeholder="Email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <input
-            className="form-control"
-            type="password"
-            placeholder="Password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button className="btn btn-primary" type="submit">Log In</button>
+      <form onSubmit={handleSubmit} className="mt-3">
+        <input
+          className="form-control mb-2"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+        />
+        <input
+          className="form-control mb-2"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+        {error && <p className="text-danger">{error}</p>}
+        <button className="btn btn-primary w-100">Login</button>
       </form>
     </div>
   );

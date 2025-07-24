@@ -1,47 +1,43 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 
 interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-  src: string;
-  alt: string;
+  placeholderSrc?: string;
 }
 
-const LazyImage: React.FC<LazyImageProps> = ({ src, alt, ...rest }) => {
-  const imgRef = useRef<HTMLImageElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+const LazyImage: React.FC<LazyImageProps> = ({
+  src,
+  alt,
+  placeholderSrc,
+  ...props
+}) => {
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+  const handleLoad = () => setLoaded(true);
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = `${process.env.PUBLIC_URL}/images/default-character.webp`;
+  };
 
   return (
-    <img
-      ref={imgRef}
-      src={isVisible ? src : undefined}
-      alt={alt}
-      onLoad={() => setLoaded(true)}
-      onError={(e) => {
-        (e.target as HTMLImageElement).src = "/images/default-character.jpg";
-      }}
-      className={`fade-in ${loaded ? "loaded" : ""}`}
-      {...rest}
-    />
+    <div className="lazy-image-wrapper">
+      {placeholderSrc && (
+        <img
+          src={placeholderSrc}
+          alt="placeholder"
+          className="lazy-placeholder"
+        />
+      )}
+      <img
+        loading="lazy"
+        src={src}
+        alt={alt}
+        onLoad={handleLoad}
+        onError={handleError}
+        className={`lazy-image ${loaded ? "loaded" : ""} ${props.className || ""}`}
+        {...props}
+      />
+    </div>
   );
 };
 
