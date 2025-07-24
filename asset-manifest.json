@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/starwarsswapi/static/css/main.3b2270cc.css",
-    "main.js": "/starwarsswapi/static/js/main.f76fe11d.js",
+    "main.css": "/starwarsswapi/static/css/main.31fc1a17.css",
+    "main.js": "/starwarsswapi/static/js/main.9089d36a.js",
     "static/js/453.78ee0a44.chunk.js": "/starwarsswapi/static/js/453.78ee0a44.chunk.js",
     "index.html": "/starwarsswapi/index.html",
-    "main.3b2270cc.css.map": "/starwarsswapi/static/css/main.3b2270cc.css.map",
-    "main.f76fe11d.js.map": "/starwarsswapi/static/js/main.f76fe11d.js.map",
+    "main.31fc1a17.css.map": "/starwarsswapi/static/css/main.31fc1a17.css.map",
+    "main.9089d36a.js.map": "/starwarsswapi/static/js/main.9089d36a.js.map",
     "453.78ee0a44.chunk.js.map": "/starwarsswapi/static/js/453.78ee0a44.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b2270cc.css",
-    "static/js/main.f76fe11d.js"
+    "static/css/main.31fc1a17.css",
+    "static/js/main.9089d36a.js"
   ]
 }
