@@ -118,13 +118,13 @@ const PeopleList: React.FC = () => {
             >
               <div className="CharacterImage">
                 <LazyImage
-                  src={imageUrl || "/images/default-character.jpg"}
+                  src={imageUrl || `${process.env.PUBLIC_URL}/images/default-character.jpg`}}
                   alt={person.name}
                   className="card-img-top"
                   width="400"
                   onError={(e) => {
                     (e.target as HTMLImageElement).onerror = null;
-                    (e.target as HTMLImageElement).src = "/images/default-character.jpg";
+                    (e.target as HTMLImageElement).src = `${process.env.PUBLIC_URL}/images/default-character.jpg`}
                   }}
                 />
                 <strong>{person.name} (ID: {getIdFromUrl(person.url)})</strong>
