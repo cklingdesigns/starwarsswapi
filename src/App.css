@@ -1,7 +1,22 @@
 .App {
   text-align: center;
 }
-
+.Logo img {
+  height: 50px;
+  pointer-events: none;
+  margin-top: 20px;
+  background: black;
+  float: left;
+  margin-left: 2rem;
+}
+.App h1 {
+  color: #FFE81F;
+  background: black;
+  padding: 10px;
+  font-family: 'Star Jedi', sans-serif;
+  font-size: 3rem;
+  margin: 0;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +50,120 @@
   to {
     transform: rotate(360deg);
   }
+}
+.ListPeople {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+  color: black;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start; /* better than center for text alignment */
+  font-size: 1.2rem;
+  background-color: #f0f0f0;
+  width: 30%;
+  border-radius: 5px;
+  overflow: hidden; /* hides overflow if content is too long */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ListPeople p,
+.ListPeople strong {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;  /* ⬅️ ensures it stays on one line */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.CharacterGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  background: #b9b9b9;
+  margin: 0;
+  padding-top: 1rem;
+}
+.CharacterProfiles {
+  cursor: pointer;
+  padding: 1rem;
+  width: 400px;
+  transition: background 0.3s, color 0.3s;
+}
+.CharacterProfiles .CharacterImage {
+  text-align: center;
+  object-fit: contain;
+  object-position: center;
+  transition: opacity 0.5s ease;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.CharacterProfiles .CharacterImage img {
+  border-radius: 10px 10px 0 0;
+  height: 400px;
+  object-fit: cover;
+  object-position: top right;
+  filter: blur(0px); /* No blur initially */
+  transition: all 0.3s ease;
+  transform: translatey(0);
+}
+.CharacterProfiles .CharacterImage img:hover {
+    transition: all 0.3s ease;
+    transform: translatey(-50px) !important;
+}
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+.fade-in.loaded {
+  opacity: 1;
+}
+.scenes:is(:hover, :focus) .CharacterProfiles .CharacterImage img {
+  -webkit-mask-position: right;
+  transition: -webkit-mask-position 2s linear;
+}
+.CharacterText {
+  display: block;
+  background: #000;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  height: 100%;
+  text-align: left;
+  line-height: 16px;
+  border-radius: 0;
+}
+.CharacterImage strong {
+  background: black;
+  color: #FFE81F;
+  padding: 1rem;
+  font-family: 'Star Jedi', sans-serif;
+  font-size: 1.4rem;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.SearchBar {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+.modal-header {
+  background-color: #000;
+  color: #FFE81F;
+  padding: 1rem;
+  border-radius: 10px 10px 0 0;
+  font-family: 'Star Jedi', sans-serif;
+}
+.modal-title {
+  font-family: 'Star Jedi', sans-serif;
+  color: #FFE81F;
+  font-size: 2rem;
+  text-align: center;
 }

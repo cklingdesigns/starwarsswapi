@@ -1,23 +1,14 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import PeopleList from "./components/PeopleList";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <span className="Logo"><img src={process.env.PUBLIC_URL + "/images/sw-logo.png"} alt="Star Wars Characters" /></span>
+      <h1>Star Wars Characters</h1>
+      <PeopleList />
     </div>
   );
 }
