@@ -107,7 +107,7 @@ const PeopleList: React.FC = () => {
             return parts[parts.length - 1];
             
         };
-        const imageUrl = `/images/${getIdFromUrl(person.url)}.webp`;
+        const imageUrl = `${process.env.PUBLIC_URL}/images/${getIdFromUrl(person.url)}.webp`;
 
           return (
             <div
