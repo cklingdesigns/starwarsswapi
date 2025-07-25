@@ -1,0 +1,11 @@
+.fade-in-image {
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 2s ease-in, filter 2s ease-in;
+  will-change: opacity;
+  display: block;
+}
+.fade-in-image.loaded {
+  opacity: 1;
+  filter: blur(0);
+}

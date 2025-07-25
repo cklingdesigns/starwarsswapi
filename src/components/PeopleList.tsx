@@ -1,5 +1,6 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
-import LazyImage from "./LazyImage"; // adjust the path if in a different folder
+import "./LazyImage.css";
+import LazyImage from "./LazyImage";
 
 // --- Type Definitions ---
 interface Person {
@@ -114,21 +115,16 @@ const PeopleList: React.FC = () => {
               className="CharacterProfiles"
               key={index}
               onClick={() => handleCardClick(person)}
-              style={{ cursor: "pointer" }}
             >
               <div className="CharacterImage">
-                <img
-                  src={imageUrl || `${process.env.PUBLIC_URL}/images/default-character.jpg`}
+                <LazyImage
+                  src={imageUrl}
                   alt={person.name}
                   className="card-img-top"
-                  width="400"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).onerror = null;
-                    (e.target as HTMLImageElement).src = `${process.env.PUBLIC_URL}/images/default-character.jpg`;
-                  }}
+                  width={800}
                 />
-                <strong>{person.name.toLowerCase().split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}</strong>
-              </div>
+                <strong>{person.name.toUpperCase()}</strong>
+                </div>
             </div>
           );
         })}
@@ -148,7 +144,7 @@ const PeopleList: React.FC = () => {
           >
             <div className="modal-content">
               <div className="modal-header">
-                <h2 className="modal-title">{activePerson.name.toLowerCase().split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}</h2>
+                <h2 className="modal-title">{activePerson.name.toUpperCase()}</h2>
                 <button type="button" className="btn-close" onClick={handleCloseModal}></button>
               </div>
               <div className="modal-body CharacterText">

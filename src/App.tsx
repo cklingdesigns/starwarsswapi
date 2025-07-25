@@ -19,7 +19,7 @@ const AppContent: React.FC = () => {
       <header>
         <span className="Logo">
           <img
-            src={process.env.PUBLIC_URL + "/images/sw-logo.png"}
+            src={process.env.PUBLIC_URL + "/sw-logo.png"}
             alt="Star Wars Characters"
           />
         </span>
